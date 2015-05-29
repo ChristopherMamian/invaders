@@ -1,6 +1,23 @@
 <html>
 	<head>
 		<title>SPACE INVADERS</title>
+		<style>
+			#gameScreen{
+				position: relative;
+				background-color: silver;
+				overflow: hidden;
+			}
+
+			.gameObject{
+				position: absolute;
+				z-index: 1;
+			}
+
+		</style>
+	</head>
+	<body onload="init()">
+		<div id="gameScreen"></div>
+		<div id="output">degugger</div>
 		<script type="text/javascript">
 			var gameScreen;
 			var output;
@@ -59,6 +76,18 @@
 
 			function gameloop(){
 
+				var bgY = parseInt(bg1.style.top) + BG_SPEED;
+				if( bgY > GS_HEIGHT ){
+					bg1.style.top = -1 * parseInt(bg1.style.height) + 'px';
+				}
+				else bg1.style.top = bgY + 'px';
+
+				bgY = parseInt(bg2.style.top) + BG_SPEED;
+				if( bgY > GS_HEIGHT ){
+					bg2.style.top = -1 * parseInt(bg2.style.height) + 'px';
+				}
+				else bg2.style.top = bgY + 'px';
+
 				if(leftArrowDown){
 					var newX = parseInt(ship.style.left);
 					if(newX > 0) ship.style.left = newX - 20 + 'px';
@@ -84,22 +113,5 @@
 			});
 
 		</script>
-		<style>
-			#gameScreen{
-				position: relative;
-				background-color: silver;
-				overflow: hidden;
-			}
-
-			.gameObject{
-				position: absolute;
-				z-index: 1;
-			}
-
-		</style>
-	</head>
-	<body onload="init()">
-		<div id="gameScreen"></div>
-		<div id="output">degugger</div>
 	</body>
 </html>
