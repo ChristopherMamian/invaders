@@ -110,6 +110,14 @@
 					if(newX <  maxX) ship.style.left = newX + 20 + 'px';
 					else ship.style.left = maxX + 'px';
 				}
+
+				var b = bullets.children;
+				for(Var i=0; i<b.length; i++){
+					var newY = parseInt(b[i].style.top) - b[i].speed;
+					if(newY < 0 ) bullets.removeChild(b[i]);
+					else b[i].style.top = newY + 'px';
+				}
+				output.innerHTML = b.length;
 			}
 
 			function fire(){
