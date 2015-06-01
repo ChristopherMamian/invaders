@@ -22,6 +22,8 @@
 			var gameScreen;
 			var output;
 
+			var bullets;
+
 			var ship;
 
 			var gameTimer;
@@ -58,6 +60,14 @@
 				bg2.style.top = '-1422px';
 				gameScreen.appendChild(bg2);
 
+				bullets = document.createElement('DIV');
+				bullets.className = 'gameObject';
+				bullets.style.width = gameScreen.style.width;
+				bullets.style.height = gameScreen.style.height;
+				bullets.style.left = '0px';
+				bullets.style.top = '0px';
+				gameScreen.appendChild(bullets);
+				
 
 				output = document.getElementById('output');
 
@@ -101,6 +111,25 @@
 					else ship.style.left = maxX + 'px';
 				}
 			}
+
+			function fire(){
+				var bulletWidth = 4;
+				var bulletHeight = 10;
+				var bullet = document.createElement('DIV');
+				bullet.className = 'gameObject';
+				bullet.style.backgroundColor = 'yellow';
+				bullet.style.width = bulletWidth;
+				bullet.style.height = bulletHeight;
+				bullet.speed = 20;
+				bullet.style.top = parseInt(ship.style.top) - bulletHeight + 'px';
+				var shipX = parseInt(ship.style.left) + parseInt(ship.style.width)/2;
+				bullet.style.left = (shipX - bulletWidth/2) + 'px';
+				bullet.appendChild(bullet);
+			}
+
+			document.addEventListener('keypress', function(event){
+				if(event.keyCode==32) fire();
+			});
 
 			document.addEventListener('keydown', function(event){
 				if(event.keyCode==37) leftArrowDown = true;
