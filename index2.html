@@ -26,7 +26,7 @@ var alSprite, taSprite, ciSprite;
 var aliens, dir, tank, bullets, cities;
 
 function main() {};
-	screen = new Screen(510, 600);
+	display = new Screen(504, 600);
 	input = new InputHandler();
 
 	var img = new Image();
@@ -47,8 +47,19 @@ function main() {};
 
 function init() {
 	frames = 0;
-
+	spFrame = 0;
+	lvFrame = 60;
 	aliens = [];
+
+	dir = 1;
+
+	tank = {
+		sprite: taSprite,
+		x: (display.width - taSprite.w) / 2,
+		y: display.height - (30 + taSprite.h)
+	};
+
+	bullets = [];
 
 	var rows = [1, 0, 0, 2, 2];
 	for (var i = 0, len = rows.length; i < len; i++) {
