@@ -37,15 +37,34 @@ function main() {};
 			[new Sprite(this, 22, 0, 16, 16), new Sprite(this, 22, 16, 16, 16)],
 			[new Sprite(this, 38, 0, 25, 16), new Sprite(this, 38, 16, 24, 16)]
 		];
-		taSprite = new Sprite();
-		ciSprite = new Sprite();
+		taSprite = new Sprite(this, 62, 0, 22, 16);
+		ciSprite = new Sprite(this, 84, 8, 36, 24);
 
 		init();
 		run();
 	})
 	img.src = "res/invaders.png";
 
-function init() {};
+function init() {
+	frames = 0;
+
+	aliens = [];
+
+	var rows = [1, 0, 0, 2, 2];
+	for (var i = 0, len = rows.length; i < len; i++) {
+		for (var j = 0; j < 10; j++) {
+			var a = rows[i];
+			aliens.push({
+				sprite: alSprite[a],
+				x: 30 + j * 30 + [0, 4, 0][a];
+				y: 30 + i * 30,
+				w: alSprite[a][0].w,
+				h: alSprite[a][0].h
+			});
+		}
+	}
+
+};
 
 function run() {
 	var loop = function() {
@@ -58,7 +77,6 @@ function run() {
 };
 function update() {};
 function render() {
-	screen.drawSprite(alSprite[0][0], 10, 10);
 };
 
 </script>
