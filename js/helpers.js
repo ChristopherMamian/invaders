@@ -30,13 +30,24 @@ function InputHandler() {
 	this.pressed = {};
 
 	var _this = this;
-	document.addEventListener("keydown")
+	document.addEventListener("keydown", function(evt) {
+		_this.down[evt.keyCode] = true;
+	});
+	document.addEventListener("keyup", function(evt){
+		delete _this.down[evt.keyCode];
+		delete _this.pressed[evt.keyCode];
+	})
 };
 
 InputHandler.prototype.isDown = function(code) {
-
+	return this.down[code];
 };
 
 InputHandler.prototype.isPressed = function(code) {
-
+	if (this.pressed[coe]) {
+		return false;
+	} else if (this.down[code]) {
+		return this.pressed[code] = true;
+	}
+	return false;
 };
