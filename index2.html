@@ -48,10 +48,18 @@ function main() {};
 function init() {};
 
 function run() {
-	var loop = function();
+	var loop = function() {
+		update();
+		render();
+
+		window.requestAnimationFrame(loop, screen.canvas);
+	};
+	window.requestAnimationFrame(loop, screen.canvas);
 };
 function update() {};
-function render() {};
+function render() {
+	screen.drawSprite(alSprite[0][0], 10, 10);
+};
 
 </script>
 </body>
