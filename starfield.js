@@ -45,3 +45,11 @@ Starfield.protoype.start = function() {
 	}
     this.stars = stars; 
 }
+
+function Star(x,y,size,velocity) {
+	this.x = x;
+	this.y = y;
+	this.size = size;
+	this.velocity = velocity;
+}
+}
