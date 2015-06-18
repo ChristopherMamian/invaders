@@ -60,3 +60,12 @@ function Star(x,y,size,velocity) {
 		self.draw();
 	}, 1000 / this.fps);
 });
+
+Starfield.prototype.update = function() {
+	var dt = 1 / this.fps;
+	for(var i = 0; i <this.stars.length; i++) {
+		var star = this.stars[i];
+		star.y += dt * star.velocity;
+		// if the star has moved from the bottom of the screen, spawn it at the top.
+	}
+}
