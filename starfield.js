@@ -52,4 +52,11 @@ function Star(x,y,size,velocity) {
 	this.size = size;
 	this.velocity = velocity;
 }
-}
+
+	var self = this;
+	// Start the timer
+	this.intervalId = setInterval(function() {
+		self.update();
+		self.draw();
+	}, 1000 / this.fps);
+});
